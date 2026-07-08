@@ -1,0 +1,13 @@
+# Core numerical / stats / analysis (needed for tests A-D and selftest.py)
+numpy>=1.24
+scipy>=1.10
+pandas>=1.5
+scikit-learn>=1.2
+matplotlib>=3.6
+pyyaml>=6.0
+tqdm>=4.64
+
+# Generation stages only (attacks + ResNet-50); install on the GPU machine.
+# Match the CUDA build to your driver: https://pytorch.org/get-started/locally/
+torch>=2.0
+torchvision>=0.15

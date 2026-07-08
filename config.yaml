@@ -1,0 +1,40 @@
+# ============================================================================
+# Spectral pipeline configuration
+# ----------------------------------------------------------------------------
+# Every path and hyper-parameter the pipeline uses lives here. Edit the two
+# starred (*) fields for your machine; the rest reproduce the thesis settings.
+# ============================================================================
+
+# -- data / model ------------------------------------------------------------
+imagenet_val_dir: /home/wiwi/Documents/Msc/attacks/ply/notebooks/dataBases/imagenet/val 
+#"/path/to/imagenet/val"   # *  ImageFolder root (class subdirs)
+n_images: 500                                #    stage-1 stats use 500; ML uses 10000
+num_workers: 2
+device: "auto"                               #    auto | cuda | cpu
+seed: 42
+
+# -- attack sweep ------------------------------------------------------------
+attacks: ["BIM", "PGD"]
+eps_values: [2, 4, 8, 12, 16]                #    L-inf budget in /255
+steps: 10
+num_bins: 61
+
+# -- saturation (test D) sweep ----------------------------------------------
+sat_steps_list: [10]
+sat_alpha_ratio: 0.25
+sat_raw_cap_quantile: 0.999
+
+# -- statistics --------------------------------------------------------------
+boot_b: 5000                                 #    bootstrap resamples
+ci: 0.95
+test_a_type_filters: ["adv", "perturbation"]
+test_a_min_r2: 0.35
+test_a_min_pairs: 5            # transition scores need >=this many images per adjacent-eps pair;
+                              # lower to 2 for tiny smoke tests (e.g. n_images: 4)
+test_b_type_filters: ["adv", "perturbation"]
+r2_tie: 0.01
+aic_tie: 2.0
+bic_tie: 2.0
+
+# -- output layout -----------------------------------------------------------
+root: "outputs"                              # *  everything is written under here
