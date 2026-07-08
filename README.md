@@ -13,7 +13,7 @@ plotting and driven by a single config.
 spectral_pipeline/
 ├── config.yaml            # all paths + hyper-parameters (edit this)
 ├── run_pipeline.py        # CLI orchestrator (stage selection)
-├── selftest.py            # offline end-to-end check (no GPU / no ImageNet)
+├── selftest.py            # base end-to-end check (no GPU / no ImageNet)
 ├── requirements.txt
 ├── spectral/
 │   ├── core.py            # model laws + unified SpectralAnalyzer (torch-free)
